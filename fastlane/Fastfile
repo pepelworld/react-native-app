@@ -1,0 +1,79 @@
+update_fastlane
+
+fastlane_require 'dotenv'
+
+before_all do
+  Dotenv.overload('.env')
+end
+
+# ipaPath = "workers.ipa"
+
+# def change_log_since_last_tag
+#   return changelog_from_git_commits(pretty: '%h %s')
+# end
+
+# change_log = change_log_since_last_tag
+
+platform :android do
+  desc "Workers Production App"
+  lane :distribute do
+    gradle(task: 'clean assembleRelease', project_dir: './android', print_command: false, properties: {
+      "MYAPP_UPLOAD_STORE_FILE" => ENV["MYAPP_UPLOAD_STORE_FILE"],
+      "MYAPP_UPLOAD_STORE_PASSWORD" => ENV["MYAPP_UPLOAD_STORE_PASSWORD"],
+      "MYAPP_UPLOAD_KEY_ALIAS" => ENV["MYAPP_UPLOAD_KEY_ALIAS"],
+      "MYAPP_UPLOAD_KEY_PASSWORD" => ENV["MYAPP_UPLOAD_KEY_PASSWORD"]
+    })
+
+    firebase_app_distribution(
+      app: "1:23579764211:android:ce6c41c175689805bc5e86",
+      testers: "support@softmg.com",
+      groups: "softmg-testers",
+      firebase_cli_token: ENV["FIREBASE_TOKEN"],
+      release_notes: "Lots of amazing new features to test out!",
+      debug: true
+    )
+
+#     last_git_tag
+#     version = "#{get_version_number(target: 'Workers')}.#{get_build_number}"
+#     add_git_tag(
+#       message: change_log,
+#       tag: "v#{version}",
+#       prefix: "v",
+#       build_number: version
+#     )
+#     sh "git push"
+#     sh "git push --tags"
+
+  end
+end
+
+# platform :ios do
+#   desc "Build AdHoc"
+#   lane :build_beta do
+#     build_app(
+#       scheme: "Workers",
+#       include_bitcode: false,
+#       export_method: "ad-hoc",
+#       export_options: {
+#         provisioningProfiles: {
+#           "ru.softmg.workers" => "workers-adhoc"
+#         }
+#       },
+#       output_name: ipaPath
+#     )
+#   end
+#
+#   desc "Отправляет сборку в Firebase"
+#   lane :firebase do
+#     build_beta
+#
+#     firebase_app_distribution(
+#       app: "1:23579764211:ios:68e89ebd31b5c39abc5e86",
+#       testers: "poglicier@gmail.com",
+#       groups: "softmg-testers",
+#       release_notes: 'Initial',
+#       firebase_cli_path: "/usr/local/bin/firebase",
+#       ipa_path: ipaPath
+#     )
+#   end
+# end

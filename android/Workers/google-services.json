@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "23579764211",
+    "firebase_url": "https://workers-softmg.firebaseio.com",
+    "project_id": "workers-softmg",
+    "storage_bucket": "workers-softmg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23579764211:android:ce6c41c175689805bc5e86",
+        "android_client_info": {
+          "package_name": "ru.softmg.workers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "23579764211-94nnncjd8dvc8f3sb45fasplnarvcbut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.softmg.workers",
+            "certificate_hash": "77c15695be0a913f76457e455e897cd810199454"
+          }
+        },
+        {
+          "client_id": "23579764211-gsqrc9ot0fughb43a1iepkf5m1pln32j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2ZQyMOUw83va9SCwZaSCi8XNL0celGxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "23579764211-gsqrc9ot0fughb43a1iepkf5m1pln32j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "23579764211-o7nd1ojs140jl56srta6irpcacpuh3kh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ru.softmg.workers"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
